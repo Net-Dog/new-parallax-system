@@ -19,7 +19,7 @@ public class ParallaxSystemControl : MonoBehaviour {
     private Vector3 LastPositionCar = new Vector3();
     public List<ParallaxSetting> ListParallaxObject = new List<ParallaxSetting>();
     public GameObject Car;
-
+    public float StartWidht;
     void Start () {
         if (ListParallaxObject.Count == 0)
         {
@@ -41,9 +41,15 @@ public class ParallaxSystemControl : MonoBehaviour {
                 MaxPositionObject = ListParallaxObject[i].ObjBack.bounds.max.x;
         }
         LastPositionCar = Car.transform.position;
+        
 	}
 	// Update is called once per frame
 	void Update () {
+        if (StartWidht != Screen.width)
+        {
+            StartWidht = Screen.width;
+            return;
+        }
         RunCar = Car.transform.position - LastPositionCar;
         LastPositionCar = Car.transform.position;
         for (int i = 0; i < ListParallaxObject.Count; i++)
