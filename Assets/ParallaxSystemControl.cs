@@ -28,7 +28,7 @@ public class ParallaxSystemControl : MonoBehaviour {
         }
         if(Car == null)
         {
-            Debug.Log("Not car");
+            Debug.Log("Not car, pleas select car");
             return;
         }
         MinPositionObject = ListParallaxObject[0].ObjBack.bounds.min.x;
