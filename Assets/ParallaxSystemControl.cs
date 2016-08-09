@@ -12,7 +12,8 @@ public class ParallaxSystemControl : MonoBehaviour {
         public Vector2 Speed;
         public bool AutoRun;
     }
-
+    float[] ArrZmichennyaX;
+    float[] ArrZmichennyaY;
     private float MaxPositionObject = 0f;
     private float MinPositionObject = 0f;
     private Vector3 RunCar = new Vector3();
@@ -41,8 +42,7 @@ public class ParallaxSystemControl : MonoBehaviour {
                 MaxPositionObject = ListParallaxObject[i].ObjBack.bounds.max.x;
         }
         LastPositionCar = Car.transform.position;
-        
-	}
+    }
 	// Update is called once per frame
 	void Update () {
         if (StartWidht != Screen.width)
@@ -56,10 +56,11 @@ public class ParallaxSystemControl : MonoBehaviour {
         {
             if (RunCar.x >= 0)
             {
+
                 if (ListParallaxObject[i].AutoRun == true)
                     ListParallaxObject[i].ObjBack.transform.localPosition += new Vector3(-((ListParallaxObject[i].Speed.x * Time.deltaTime) + (RunCar.x * Time.deltaTime)), -(ListParallaxObject[i].Speed.y * RunCar.y * Time.deltaTime), 0f);
                 else
-                    ListParallaxObject[i].ObjBack.transform.localPosition += new Vector3(-((ListParallaxObject[i].Speed.x * Time.deltaTime) * (RunCar.x)), -(ListParallaxObject[i].Speed.y * RunCar.y * Time.deltaTime), 0f);
+                    ListParallaxObject[i].ObjBack.transform.localPosition += new Vector3(-((ListParallaxObject[i].Speed.x * Time.deltaTime) * (RunCar.x)), -(ListParallaxObject[i].Speed.y * RunCar.y * Time.deltaTime) ,0f);
                 if (ListParallaxObject[i].ObjBack.transform.localPosition.x < MinPositionObject)
                     ListParallaxObject[i].ObjBack.transform.localPosition = new Vector3(MaxPositionObject, ListParallaxObject[i].ObjBack.transform.position.y, ListParallaxObject[i].ObjBack.transform.localPosition.z);
             }
